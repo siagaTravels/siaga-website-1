@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { CONTACT_INFO } from '@/lib/contact';
 
 export function Footer() {
   return (
@@ -16,7 +17,7 @@ export function Footer() {
               <span style={{ fontFamily: "'Bebas Neue', cursive", fontSize: 24, color: '#fff', letterSpacing: '0.06em' }}>SIAGA TRAVELS</span>
             </div>
             <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: 13, lineHeight: 1.7, color: '#888', margin: 0, maxWidth: 300 }}>
-              Your trusted gateway to Sri Lanka. We craft authentic, unforgettable travel experiences across emerald highlands, pristine beaches, and ancient sanctuaries.
+              {CONTACT_INFO.slogan} We craft authentic, unforgettable travel experiences across emerald highlands, pristine beaches, and ancient sanctuaries.
             </p>
           </div>
 
@@ -43,6 +44,11 @@ export function Footer() {
                 onMouseEnter={e => (e.currentTarget.style.color = '#E86A2A')}
                 onMouseLeave={e => (e.currentTarget.style.color = '#888')}>
                 Travel Blog
+              </Link>
+              <Link href="/contact" style={{ fontFamily: 'Manrope, sans-serif', fontSize: 13, color: '#888', textDecoration: 'none', transition: 'color 0.2s' }}
+                onMouseEnter={e => (e.currentTarget.style.color = '#E86A2A')}
+                onMouseLeave={e => (e.currentTarget.style.color = '#888')}>
+                Contact Us
               </Link>
             </div>
           </div>

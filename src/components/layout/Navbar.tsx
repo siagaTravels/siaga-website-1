@@ -20,6 +20,7 @@ export function Navbar() {
     { label: 'Experiences', href: '/experiences' },
     { label: 'Tours', href: '/packages' },
     { label: 'Blog', href: '/blog' },
+    { label: 'Contact', href: '/contact' },
   ];
 
   return (
