@@ -19,6 +19,7 @@ export function Navbar() {
     { label: 'Destinations', href: '/destinations' },
     { label: 'Experiences', href: '/experiences' },
     { label: 'Tours', href: '/packages' },
+    { label: 'Events', href: '/events' },
     { label: 'Blog', href: '/blog' },
     { label: 'Contact', href: '/contact' },
   ];

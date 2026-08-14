@@ -78,12 +78,52 @@ export interface Event {
   slug: string;
   name: string;
   description?: string;
+  badge?: string;
+  is_featured?: boolean;
   venue?: string;
+  city?: string;
+  district?: string;
+  google_map_link?: string;
   start_date?: string;
   end_date?: string;
+  start_time?: string;
+  end_time?: string;
+  ticket_type?: string;
+  ticket_tiers?: {
+    name: string;
+    price: number;
+    currency: string;
+    perks?: string;
+    booking_url?: string;
+  }[];
+  agenda?: {
+    time: string;
+    title: string;
+    performer?: string;
+    description?: string;
+  }[];
+  highlights?: string[];
+  performers?: {
+    name: string;
+    role?: string;
+    avatar_url?: string;
+  }[];
+  faqs?: {
+    question: string;
+    answer: string;
+  }[];
+  organizer_name?: string;
+  organizer_logo_url?: string;
+  capacity?: number;
+  registration_deadline?: string;
   main_image_url?: string;
   image?: string;
+  gallery_urls?: string[];
+  contact_details?: Record<string, string>;
+  website_link?: string;
   tags?: string[];
+  is_active?: boolean;
+  created_at?: string;
 }
 
 export interface Blog {
@@ -128,7 +168,12 @@ export const getPackageCategories = () =>
   fetchCMS<{ item: any[] }>('/packages/categories/');
 
 export const getEvents = (params?: Record<string, string | number>) =>
-  fetchCMS<CMSListResponse<Event>>('/events/', { page_size: 6, ...params });
+  fetchCMS<CMSListResponse<Event>>('/events/', { page_size: 20, ...params });
+
+export const getEventBySlug = async (slug: string) => {
+  const res = await fetchCMS<any>(`/events/${slug}`);
+  return res?.item ?? res;
+};
 
 export const getBlogs = (params?: Record<string, string | number>) =>
   fetchCMS<CMSListResponse<Blog>>('/blogs/', { page_size: 10, ...params });
@@ -146,6 +191,7 @@ export const cmsApi = {
   getPackageBySlug,
   getPackageCategories,
   getEvents,
+  getEventBySlug,
   getBlogs,
   getBlogBySlug,
 };
